@@ -68,6 +68,10 @@ class Player(pygame.sprite.Sprite):
             self.rect.x += PLAYER_SPEED
         
         # 플레이어가 화면 왼쪽·오른쪽 끝 밖으로 나가지 않도록 위치를 제한.
+        if self.rect.left < 0:
+            self.rect.left = 0
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
         pass
 
     def shoot(self):
