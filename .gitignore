@@ -6,3 +6,6 @@ __pycache__/
 .venv/
 venv/
 env/
+
+# VS Code 개발 환경 설정 폴더 제외
+.vscode/
