@@ -64,7 +64,7 @@ class Player(pygame.sprite.Sprite):
         # TODO(F1): 
         if keys[pygame.K_LEFT]: # 왼쪽 방향키(keys[pygame.K_LEFT])를 누르고 있으면 PLAYER_SPEED 만큼 왼쪽으로,
             self.rect.x -= PLAYER_SPEED
-        elif keys[pygame.K_RIGHT]: # 오른쪽 방향키(keys[pygame.K_RIGHT])면 오른쪽으로 움직이게 할 것.
+        if keys[pygame.K_RIGHT]: # 오른쪽 방향키(keys[pygame.K_RIGHT])면 오른쪽으로 움직이게 할 것.
             self.rect.x += PLAYER_SPEED
         
         # 플레이어가 화면 왼쪽·오른쪽 끝 밖으로 나가지 않도록 위치를 제한.
