@@ -184,9 +184,12 @@ class Game:
         cx = WIDTH // 2
         cy = HEIGHT // 2
         self.screen.blit(self.dark_shade, (0, 0))
-        self.draw_text("GAME OVER", self.big_font, YELLOW, center=(cx, cy-20))
-        self.draw_text(f"SCORE: {self.score}", self.font, WHITE, center=(cx, cy+20))
+        self.draw_text("GAME OVER", self.big_font, YELLOW, center=(cx, cy-60))
+        self.draw_text(f"SCORE: {self.score}", self.font, WHITE, center=(cx, cy))
         # TODO(F5): 최고 점수("HIGH SCORE: 300")와 재시작 안내("Press R to restart")도 표시할 것.
+        self.draw_text(f"HIGH SCORE: {self.high_score}", self.font, WHITE, center=(cx, cy+40))
+        if pygame.time.get_ticks() // 500 % 2 == 0:  # 0.5초마다 깜빡임
+            self.draw_text("Press R to start", self.font, YELLOW, center=(cx, 540))
         pass
 
     # ---------------- 게임 루프 ----------------
