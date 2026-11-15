@@ -17,13 +17,22 @@ def load_high_score():
     """HIGHSCORE_FILE 에서 최고 점수를 읽어 돌려준다."""
     # TODO(F5): 파일에서 최고 점수를 읽어 int 로 반환할 것.
     #           파일이 없거나 내용이 숫자가 아니면 0 을 반환할 것.
-    return 0
+    try:
+        with open(HIGHSCORE_FILE, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+            return int(content)
+    except (FileNotFoundError, ValueError):
+        return 0
 
 
 def save_high_score(score):
     """최고 점수를 HIGHSCORE_FILE 에 저장한다."""
     # TODO(F5): score 를 파일에 저장할 것. (다음 실행 때 load_high_score() 로 읽을 수 있게)
-    pass
+    try:
+        with open(HIGHSCORE_FILE, "w", encoding="utf-8") as f:
+            f.write(str(score))
+    except OSError:
+        pass
 
 
 class Game:
@@ -78,6 +87,8 @@ class Game:
                     self.bullets.add(bullet)
                     self.all_sprites.add(bullet)
                 # TODO(F5): 게임 오버 상태에서 R 키를 누르면 self.reset() 으로 새 판을 시작할 것.
+                elif event.key == pygame.K_r and self.game_over:
+                    self.reset()
 
     def handle_title_event(self, event):
         """시작 화면의 입력: SPACE 면 새 판 시작, ESC 면 종료. (적 생성·발사 없음)"""
@@ -128,6 +139,9 @@ class Game:
         """게임 오버 처리."""
         self.game_over = True
         # TODO(F5): 이번 점수가 최고 점수보다 높으면 self.high_score 를 바꾸고 save_high_score() 로 저장할 것.
+        if self.high_score < self.score:
+            self.high_score = self.score
+            save_high_score(self.score)
 
     # ---------------- 그리기 ----------------
     def draw_text(self, text, font, color, **position):
@@ -170,9 +184,12 @@ class Game:
         cx = WIDTH // 2
         cy = HEIGHT // 2
         self.screen.blit(self.dark_shade, (0, 0))
-        self.draw_text("GAME OVER", self.big_font, YELLOW, center=(cx, cy-20))
-        self.draw_text(f"SCORE: {self.score}", self.font, WHITE, center=(cx, cy+20))
+        self.draw_text("GAME OVER", self.big_font, YELLOW, center=(cx, cy-60))
+        self.draw_text(f"SCORE: {self.score}", self.font, WHITE, center=(cx, cy))
         # TODO(F5): 최고 점수("HIGH SCORE: 300")와 재시작 안내("Press R to restart")도 표시할 것.
+        self.draw_text(f"HIGH SCORE: {self.high_score}", self.font, WHITE, center=(cx, cy+40))
+        if pygame.time.get_ticks() // 500 % 2 == 0:  # 0.5초마다 깜빡임
+            self.draw_text("Press R to start", self.font, YELLOW, center=(cx, 540))
         pass
 
     # ---------------- 게임 루프 ----------------
