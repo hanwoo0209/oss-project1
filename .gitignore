@@ -9,3 +9,6 @@ env/
 
 # VS Code 개발 환경 설정 폴더 제외
 .vscode/
+
+# 배포 시 불필요한 최고 점수 기록용 txt 파일 제외
+highscore.txt
