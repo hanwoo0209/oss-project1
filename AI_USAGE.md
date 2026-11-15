@@ -23,3 +23,4 @@ AI 를 전혀 쓰지 않았다면 표를 지우고 "이 과제에서 생성형 A
 | 2026-11-15 | Gemini | F4 | pygame.sprite.spritecollide 함수의 매개변수(dokill, collided), 반환값(list) 구조와 pygame.sprite.groupcollided와의 차이점 문의 | 플레이어 스프라이트와 적 그룹 간 충돌 시 자동 소멸과 히트박스 충돌 판정 기준 변경 등의 기능을 이해하고, pygame.sprite.groupcollided 함수와의 차이점을 확인하여 적절하게 main.py 충돌 판정에 반영함 |
 | 2026-11-16 | Gemini | F5 | load_high_score() 함수 구현을 위한 txt 파일 읽기 함수 및 예외 처리 문의 | FileNotFoundError, ValueError 예외 처리를 적용해 파일이 없거나 값이 숫자가 아닐 때 0을 반환하도록 구현함 |
 | 2026-11-16 | Gemini | F5 | save_high_score(score) 함수 구현을 위한 파일 쓰기 함수 및 쓰기 모드의 기존 점수 덮어쓰기 동작 원리 문의 | "w" 모드가 기존 점수를 지우고 새 값을 덮어쓴다는 원리를 이해하고 함수를 작성함 |
+| 2026-11-16 | Gemini | 기타 | 작성한 코드의 최종 점검 | 게임오버 시 표시되는 화면에서 그림자 효과를 중복 적용한 것과 재시작 안내 문구의 오타를 확인했으며 수정 적용함 |
