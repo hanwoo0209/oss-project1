@@ -20,3 +20,4 @@ AI 를 전혀 쓰지 않았다면 표를 지우고 "이 과제에서 생성형 A
 | 2026-11-13 | Gemini | F2 | self.all_sprites 객체의 종류와 총알 생성 시 add() 메서드로 추가하는 이유 문의 | 화면 일괄 렌더링(self.all_sprites.add(bullet))과 명중 판정(self.bullets.add(bullet))의 구분을 이해하고 main.py의 총알 발사 코드에 반영함 |
 | 2026-11-13 | Gemini | F2 | 스페이스바를 눌러도 총알이 화면에 보이지 않는 문제 문의 | centerx 멤버를 통해 플레이어의 가운데 x 좌표를 총알의 위치로 전달해야하나 centery로 플레이어의 가운제 y 좌표를 총알의 위치로 전달한 문제점을 발견하고 정상적으로 수정함. 또한 문의 과정에서 게임오버 이후에도 총알이 발사되는 문제가 있음을 확인하고 수정함 |
 | 2026-11-14 | Gemini | F3 | pygame.sprite.groupcollide 함수의 매개변수(dokill1, dokill2), 반환값(dict) 구조 문의 | 적·총알 그룹 간 충돌 시 자동 소멸(True, True)과 반환된 딕셔너리 길이(len)를 이용한 점수 계산 원리를 이해하고 main.py 충돌 판정에 반영함 |
+| 2026-11-15 | Gemini | F4 | pygame.sprite.spritecollide 함수의 매개변수(dokill, collided), 반환값(list) 구조와 pygame.sprite.groupcollided와의 차이점 문의 | 플레이어 스프라이트와 적 그룹 간 충돌 시 자동 소멸과 히트박스 충돌 판정 기준 변경 등의 기능을 이해하고, pygame.sprite.groupcollided 함수와의 차이점을 확인하여 적절하게 main.py 충돌 판정에 반영함 |
